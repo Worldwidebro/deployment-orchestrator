@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  traycer_design_system:
+    image: traycer:latest
+    container_name: traycer-design-system
+    ports:
+      - "8201:8201"
+    environment:
+      - PORT=8201
+      - COMPONENT=traycer
+      - SERVICE=traycer-design-system
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8201/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - traycer_network
+
+  traycer_component_library:
+    image: traycer:latest
+    container_name: traycer-component-library
+    ports:
+      - "8202:8202"
+    environment:
+      - PORT=8202
+      - COMPONENT=traycer
+      - SERVICE=traycer-component-library
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8202/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - traycer_network
+
+  traycer_orchestration:
+    image: traycer:latest
+    container_name: traycer-orchestration
+    ports:
+      - "8203:8203"
+    environment:
+      - PORT=8203
+      - COMPONENT=traycer
+      - SERVICE=traycer-orchestration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8203/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - traycer_network
+
+  traycer_frontend_proxy:
+    image: traycer:latest
+    container_name: traycer-frontend-proxy
+    ports:
+      - "8204:8204"
+    environment:
+      - PORT=8204
+      - COMPONENT=traycer
+      - SERVICE=traycer-frontend-proxy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8204/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - traycer_network
+
+  traycer_build_system:
+    image: traycer:latest
+    container_name: traycer-build-system
+    ports:
+      - "8205:8205"
+    environment:
+      - PORT=8205
+      - COMPONENT=traycer
+      - SERVICE=traycer-build-system
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8205/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - traycer_network
+
+networks:
+  traycer_network:
+    driver: bridge
+
+volumes:
+  traycer_data:
+    driver: local

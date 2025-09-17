@@ -1,0 +1,136 @@
+version: '3.8'
+
+services:
+  iza_memory_core:
+    image: iza_os:latest
+    container_name: iza-memory-core
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - COMPONENT=iza_os
+      - SERVICE=iza-memory-core
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - iza_os_network
+
+  iza_agent_orchestration:
+    image: iza_os:latest
+    container_name: iza-agent-orchestration
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+      - COMPONENT=iza_os
+      - SERVICE=iza-agent-orchestration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - iza_os_network
+
+  iza_venture_factory:
+    image: iza_os:latest
+    container_name: iza-venture-factory
+    ports:
+      - "8003:8003"
+    environment:
+      - PORT=8003
+      - COMPONENT=iza_os
+      - SERVICE=iza-venture-factory
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - iza_os_network
+
+  iza_repository_hub:
+    image: iza_os:latest
+    container_name: iza-repository-hub
+    ports:
+      - "8004:8004"
+    environment:
+      - PORT=8004
+      - COMPONENT=iza_os
+      - SERVICE=iza-repository-hub
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - iza_os_network
+
+  iza_vercept_intelligence:
+    image: iza_os:latest
+    container_name: iza-vercept-intelligence
+    ports:
+      - "8005:8005"
+    environment:
+      - PORT=8005
+      - COMPONENT=iza_os
+      - SERVICE=iza-vercept-intelligence
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - iza_os_network
+
+  iza_command_center:
+    image: iza_os:latest
+    container_name: iza-command-center
+    ports:
+      - "8006:8006"
+    environment:
+      - PORT=8006
+      - COMPONENT=iza_os
+      - SERVICE=iza-command-center
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - iza_os_network
+
+  iza_genixbank_financial:
+    image: iza_os:latest
+    container_name: iza-genixbank-financial
+    ports:
+      - "8007:8007"
+    environment:
+      - PORT=8007
+      - COMPONENT=iza_os
+      - SERVICE=iza-genixbank-financial
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8007/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - iza_os_network
+
+networks:
+  iza_os_network:
+    driver: bridge
+
+volumes:
+  iza_os_data:
+    driver: local

@@ -1,0 +1,154 @@
+version: '3.8'
+
+services:
+  genixbank_banking_api:
+    image: genixbank:latest
+    container_name: genixbank-banking-api
+    ports:
+      - "8101:8101"
+    environment:
+      - PORT=8101
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-banking-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8101/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+  genixbank_compliance_api:
+    image: genixbank:latest
+    container_name: genixbank-compliance-api
+    ports:
+      - "8102:8102"
+    environment:
+      - PORT=8102
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-compliance-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8102/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+  genixbank_equity_api:
+    image: genixbank:latest
+    container_name: genixbank-equity-api
+    ports:
+      - "8103:8103"
+    environment:
+      - PORT=8103
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-equity-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8103/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+  genixbank_transaction_api:
+    image: genixbank:latest
+    container_name: genixbank-transaction-api
+    ports:
+      - "8104:8104"
+    environment:
+      - PORT=8104
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-transaction-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8104/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+  genixbank_payroll_api:
+    image: genixbank:latest
+    container_name: genixbank-payroll-api
+    ports:
+      - "8105:8105"
+    environment:
+      - PORT=8105
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-payroll-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8105/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+  genixbank_dealmaking_api:
+    image: genixbank:latest
+    container_name: genixbank-dealmaking-api
+    ports:
+      - "8106:8106"
+    environment:
+      - PORT=8106
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-dealmaking-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8106/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+  genixbank_dashboard:
+    image: genixbank:latest
+    container_name: genixbank-dashboard
+    ports:
+      - "8107:8107"
+    environment:
+      - PORT=8107
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-dashboard
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8107/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+  genixbank_reports:
+    image: genixbank:latest
+    container_name: genixbank-reports
+    ports:
+      - "8108:8108"
+    environment:
+      - PORT=8108
+      - COMPONENT=genixbank
+      - SERVICE=genixbank-reports
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8108/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - genixbank_network
+
+networks:
+  genixbank_network:
+    driver: bridge
+
+volumes:
+  genixbank_data:
+    driver: local

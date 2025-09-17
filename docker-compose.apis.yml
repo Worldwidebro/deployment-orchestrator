@@ -1,0 +1,136 @@
+version: '3.8'
+
+services:
+  api_gateway:
+    image: apis:latest
+    container_name: api-gateway
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+      - COMPONENT=apis
+      - SERVICE=api-gateway
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - apis_network
+
+  auth_service:
+    image: apis:latest
+    container_name: auth-service
+    ports:
+      - "4002:4002"
+    environment:
+      - PORT=4002
+      - COMPONENT=apis
+      - SERVICE=auth-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - apis_network
+
+  user_service:
+    image: apis:latest
+    container_name: user-service
+    ports:
+      - "4003:4003"
+    environment:
+      - PORT=4003
+      - COMPONENT=apis
+      - SERVICE=user-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - apis_network
+
+  notification_service:
+    image: apis:latest
+    container_name: notification-service
+    ports:
+      - "4004:4004"
+    environment:
+      - PORT=4004
+      - COMPONENT=apis
+      - SERVICE=notification-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - apis_network
+
+  file_service:
+    image: apis:latest
+    container_name: file-service
+    ports:
+      - "4005:4005"
+    environment:
+      - PORT=4005
+      - COMPONENT=apis
+      - SERVICE=file-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - apis_network
+
+  email_service:
+    image: apis:latest
+    container_name: email-service
+    ports:
+      - "4006:4006"
+    environment:
+      - PORT=4006
+      - COMPONENT=apis
+      - SERVICE=email-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - apis_network
+
+  sms_service:
+    image: apis:latest
+    container_name: sms-service
+    ports:
+      - "4007:4007"
+    environment:
+      - PORT=4007
+      - COMPONENT=apis
+      - SERVICE=sms-service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4007/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - apis_network
+
+networks:
+  apis_network:
+    driver: bridge
+
+volumes:
+  apis_data:
+    driver: local

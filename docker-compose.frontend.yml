@@ -1,0 +1,478 @@
+version: '3.8'
+
+services:
+  frontend_project_01:
+    image: frontend:latest
+    container_name: frontend-project-01
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-01
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_02:
+    image: frontend:latest
+    container_name: frontend-project-02
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-02
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_03:
+    image: frontend:latest
+    container_name: frontend-project-03
+    ports:
+      - "3003:3003"
+    environment:
+      - PORT=3003
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-03
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_04:
+    image: frontend:latest
+    container_name: frontend-project-04
+    ports:
+      - "3004:3004"
+    environment:
+      - PORT=3004
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-04
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_05:
+    image: frontend:latest
+    container_name: frontend-project-05
+    ports:
+      - "3005:3005"
+    environment:
+      - PORT=3005
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-05
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_06:
+    image: frontend:latest
+    container_name: frontend-project-06
+    ports:
+      - "3006:3006"
+    environment:
+      - PORT=3006
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-06
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_07:
+    image: frontend:latest
+    container_name: frontend-project-07
+    ports:
+      - "3007:3007"
+    environment:
+      - PORT=3007
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-07
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3007/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_08:
+    image: frontend:latest
+    container_name: frontend-project-08
+    ports:
+      - "3008:3008"
+    environment:
+      - PORT=3008
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-08
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3008/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_09:
+    image: frontend:latest
+    container_name: frontend-project-09
+    ports:
+      - "3009:3009"
+    environment:
+      - PORT=3009
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-09
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3009/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_10:
+    image: frontend:latest
+    container_name: frontend-project-10
+    ports:
+      - "3010:3010"
+    environment:
+      - PORT=3010
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-10
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3010/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_11:
+    image: frontend:latest
+    container_name: frontend-project-11
+    ports:
+      - "3011:3011"
+    environment:
+      - PORT=3011
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-11
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3011/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_12:
+    image: frontend:latest
+    container_name: frontend-project-12
+    ports:
+      - "3012:3012"
+    environment:
+      - PORT=3012
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-12
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3012/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_13:
+    image: frontend:latest
+    container_name: frontend-project-13
+    ports:
+      - "3013:3013"
+    environment:
+      - PORT=3013
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-13
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3013/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_14:
+    image: frontend:latest
+    container_name: frontend-project-14
+    ports:
+      - "3014:3014"
+    environment:
+      - PORT=3014
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-14
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3014/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_15:
+    image: frontend:latest
+    container_name: frontend-project-15
+    ports:
+      - "3015:3015"
+    environment:
+      - PORT=3015
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-15
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3015/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_16:
+    image: frontend:latest
+    container_name: frontend-project-16
+    ports:
+      - "3016:3016"
+    environment:
+      - PORT=3016
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-16
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3016/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_17:
+    image: frontend:latest
+    container_name: frontend-project-17
+    ports:
+      - "3017:3017"
+    environment:
+      - PORT=3017
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-17
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3017/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_18:
+    image: frontend:latest
+    container_name: frontend-project-18
+    ports:
+      - "3018:3018"
+    environment:
+      - PORT=3018
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-18
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3018/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_19:
+    image: frontend:latest
+    container_name: frontend-project-19
+    ports:
+      - "3019:3019"
+    environment:
+      - PORT=3019
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-19
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3019/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_20:
+    image: frontend:latest
+    container_name: frontend-project-20
+    ports:
+      - "3020:3020"
+    environment:
+      - PORT=3020
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-20
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3020/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_21:
+    image: frontend:latest
+    container_name: frontend-project-21
+    ports:
+      - "3021:3021"
+    environment:
+      - PORT=3021
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-21
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3021/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_22:
+    image: frontend:latest
+    container_name: frontend-project-22
+    ports:
+      - "3022:3022"
+    environment:
+      - PORT=3022
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-22
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3022/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_23:
+    image: frontend:latest
+    container_name: frontend-project-23
+    ports:
+      - "3023:3023"
+    environment:
+      - PORT=3023
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-23
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3023/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_24:
+    image: frontend:latest
+    container_name: frontend-project-24
+    ports:
+      - "3024:3024"
+    environment:
+      - PORT=3024
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-24
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3024/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_25:
+    image: frontend:latest
+    container_name: frontend-project-25
+    ports:
+      - "3025:3025"
+    environment:
+      - PORT=3025
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-25
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3025/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+  frontend_project_26:
+    image: frontend:latest
+    container_name: frontend-project-26
+    ports:
+      - "3026:3026"
+    environment:
+      - PORT=3026
+      - COMPONENT=frontend
+      - SERVICE=frontend-project-26
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3026/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - frontend_network
+
+networks:
+  frontend_network:
+    driver: bridge
+
+volumes:
+  frontend_data:
+    driver: local

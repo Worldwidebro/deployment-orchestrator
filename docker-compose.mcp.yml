@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  mcp_claude_agents:
+    image: mcp_agents:latest
+    container_name: mcp-claude-agents
+    ports:
+      - "8301:8301"
+    environment:
+      - PORT=8301
+      - COMPONENT=mcp_agents
+      - SERVICE=mcp-claude-agents
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8301/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - mcp_agents_network
+
+  mcp_swarms:
+    image: mcp_agents:latest
+    container_name: mcp-swarms
+    ports:
+      - "8302:8302"
+    environment:
+      - PORT=8302
+      - COMPONENT=mcp_agents
+      - SERVICE=mcp-swarms
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8302/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - mcp_agents_network
+
+  mcp_bmad_orchestrator:
+    image: mcp_agents:latest
+    container_name: mcp-bmad-orchestrator
+    ports:
+      - "8303:8303"
+    environment:
+      - PORT=8303
+      - COMPONENT=mcp_agents
+      - SERVICE=mcp-bmad-orchestrator
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8303/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - mcp_agents_network
+
+  mcp_traycer_ai:
+    image: mcp_agents:latest
+    container_name: mcp-traycer-ai
+    ports:
+      - "8304:8304"
+    environment:
+      - PORT=8304
+      - COMPONENT=mcp_agents
+      - SERVICE=mcp-traycer-ai
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8304/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - mcp_agents_network
+
+  mcp_cursor_integration:
+    image: mcp_agents:latest
+    container_name: mcp-cursor-integration
+    ports:
+      - "8305:8305"
+    environment:
+      - PORT=8305
+      - COMPONENT=mcp_agents
+      - SERVICE=mcp-cursor-integration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8305/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - mcp_agents_network
+
+  mcp_github_integration:
+    image: mcp_agents:latest
+    container_name: mcp-github-integration
+    ports:
+      - "8306:8306"
+    environment:
+      - PORT=8306
+      - COMPONENT=mcp_agents
+      - SERVICE=mcp-github-integration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8306/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - mcp_agents_network
+
+networks:
+  mcp_agents_network:
+    driver: bridge
+
+volumes:
+  mcp_agents_data:
+    driver: local

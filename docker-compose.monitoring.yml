@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  prometheus:
+    image: monitoring:latest
+    container_name: prometheus
+    ports:
+      - "9001:9001"
+    environment:
+      - PORT=9001
+      - COMPONENT=monitoring
+      - SERVICE=prometheus
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - monitoring_network
+
+  grafana:
+    image: monitoring:latest
+    container_name: grafana
+    ports:
+      - "9002:9002"
+    environment:
+      - PORT=9002
+      - COMPONENT=monitoring
+      - SERVICE=grafana
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - monitoring_network
+
+  jaeger:
+    image: monitoring:latest
+    container_name: jaeger
+    ports:
+      - "9003:9003"
+    environment:
+      - PORT=9003
+      - COMPONENT=monitoring
+      - SERVICE=jaeger
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - monitoring_network
+
+  kibana:
+    image: monitoring:latest
+    container_name: kibana
+    ports:
+      - "9004:9004"
+    environment:
+      - PORT=9004
+      - COMPONENT=monitoring
+      - SERVICE=kibana
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - monitoring_network
+
+  alertmanager:
+    image: monitoring:latest
+    container_name: alertmanager
+    ports:
+      - "9005:9005"
+    environment:
+      - PORT=9005
+      - COMPONENT=monitoring
+      - SERVICE=alertmanager
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - monitoring_network
+
+  node_exporter:
+    image: monitoring:latest
+    container_name: node-exporter
+    ports:
+      - "9006:9006"
+    environment:
+      - PORT=9006
+      - COMPONENT=monitoring
+      - SERVICE=node-exporter
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - monitoring_network
+
+networks:
+  monitoring_network:
+    driver: bridge
+
+volumes:
+  monitoring_data:
+    driver: local

@@ -1,0 +1,118 @@
+version: '3.8'
+
+services:
+  postgresql_main:
+    image: databases:latest
+    container_name: postgresql-main
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - COMPONENT=databases
+      - SERVICE=postgresql-main
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - databases_network
+
+  redis_cache:
+    image: databases:latest
+    container_name: redis-cache
+    ports:
+      - "5002:5002"
+    environment:
+      - PORT=5002
+      - COMPONENT=databases
+      - SERVICE=redis-cache
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - databases_network
+
+  mongodb_documents:
+    image: databases:latest
+    container_name: mongodb-documents
+    ports:
+      - "5003:5003"
+    environment:
+      - PORT=5003
+      - COMPONENT=databases
+      - SERVICE=mongodb-documents
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - databases_network
+
+  elasticsearch_search:
+    image: databases:latest
+    container_name: elasticsearch-search
+    ports:
+      - "5004:5004"
+    environment:
+      - PORT=5004
+      - COMPONENT=databases
+      - SERVICE=elasticsearch-search
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - databases_network
+
+  influxdb_metrics:
+    image: databases:latest
+    container_name: influxdb-metrics
+    ports:
+      - "5005:5005"
+    environment:
+      - PORT=5005
+      - COMPONENT=databases
+      - SERVICE=influxdb-metrics
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - databases_network
+
+  neo4j_graph:
+    image: databases:latest
+    container_name: neo4j-graph
+    ports:
+      - "5006:5006"
+    environment:
+      - PORT=5006
+      - COMPONENT=databases
+      - SERVICE=neo4j-graph
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - databases_network
+
+networks:
+  databases_network:
+    driver: bridge
+
+volumes:
+  databases_data:
+    driver: local

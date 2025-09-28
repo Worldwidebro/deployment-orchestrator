@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  deployment-orchestrator:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - REPO_NAME=deployment-orchestrator
+      - ORGANIZATION=Worldwidebro
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    networks:
+      - billionaire-empire
+    restart: unless-stopped
+
+  monitoring:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - billionaire-empire
+
+networks:
+  billionaire-empire:
+    driver: bridge
